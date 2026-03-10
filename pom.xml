@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>site.elseif</groupId>
+    <artifactId>my-rpc-framework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>rpc-provider</module>
+        <module>rpc-consumer</module>
+        <module>rpc-core</module>
+        <module>rpc-api</module>
+        <module>rpc-common</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- 直接在父模块中引入所有子模块共享的依赖 -->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
+            <scope>provided</scope>  <!-- Lombok 只需要编译时使用，运行时不需要 -->
+        </dependency>
+        <!-- SLF4J API 2.x 版本 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.13</version>
+        </dependency>
+
+        <!-- Logback 实现 1.4.x 版本（适配 SLF4J 2.x） -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.14</version>
+        </dependency>
+    </dependencies>
+    <!-- 主pom.xml 核心依赖示例 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.68.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>5.2.0</version>
+            </dependency>
+            <!-- Hessian序列化 -->
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>4.0.66</version>  <!-- 稳定版本 -->
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>3.1.1</version>
+            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.google.protobuf</groupId>-->
+<!--                <artifactId>protobuf-java</artifactId>-->
+<!--                <version>4.28.2</version>-->
+<!--            </dependency>-->
+        </dependencies>
+    </dependencyManagement>
+</project>

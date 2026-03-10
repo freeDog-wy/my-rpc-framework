@@ -1,0 +1,8 @@
+# Kryo序列化实现
+site.elseif.myRpcFramework.core.serializer.KryoSerializer
+
+# Hessian序列化实现（新增）
+site.elseif.myRpcFramework.core.serializer.HessianSerializer
+
+# Protobuf序列化实现（未实现）
+# ProtobufSerializer
