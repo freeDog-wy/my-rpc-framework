@@ -1,0 +1,121 @@
+Benchmark                                                                          (threadCount)    Mode     Cnt   Score    Error   Units
+myRpcFramework.consumer.test.RpcBenchmark.testEcho                                             1   thrpt       5  12.735 ±  1.721  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testEcho                                             2   thrpt       5  13.044 ±  0.328  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testEcho                                             4   thrpt       5  13.104 ±  0.224  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testEcho                                             8   thrpt       5  13.079 ±  0.273  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO                                          1   thrpt       5  12.793 ±  0.384  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO                                          2   thrpt       5  12.960 ±  0.205  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO                                          4   thrpt       5  12.809 ±  0.800  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO                                          8   thrpt       5  12.844 ±  0.321  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList                                      1   thrpt       5  11.899 ±  0.196  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList                                      2   thrpt       5  11.973 ±  0.176  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList                                      4   thrpt       5  11.826 ±  0.278  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList                                      8   thrpt       5  11.961 ±  0.167  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.testEcho                                             1  sample  311933   0.080 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.00                              1  sample           0.064            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.50                              1  sample           0.073            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.90                              1  sample           0.097            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.95                              1  sample           0.110            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.99                              1  sample           0.138            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.999                             1  sample           0.424            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.9999                            1  sample           0.844            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p1.00                              1  sample          13.615            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho                                             2  sample  324200   0.077 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.00                              2  sample           0.064            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.50                              2  sample           0.072            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.90                              2  sample           0.086            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.95                              2  sample           0.100            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.99                              2  sample           0.127            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.999                             2  sample           0.450            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.9999                            2  sample           0.851            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p1.00                              2  sample          13.025            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho                                             4  sample  324680   0.077 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.00                              4  sample           0.065            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.50                              4  sample           0.072            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.90                              4  sample           0.086            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.95                              4  sample           0.101            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.99                              4  sample           0.128            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.999                             4  sample           0.437            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.9999                            4  sample           0.897            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p1.00                              4  sample          14.057            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho                                             8  sample  321638   0.078 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.00                              8  sample           0.064            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.50                              8  sample           0.072            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.90                              8  sample           0.087            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.95                              8  sample           0.103            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.99                              8  sample           0.130            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.999                             8  sample           0.470            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p0.9999                            8  sample           0.877            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testEcho:testEcho·p1.00                              8  sample          10.994            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO                                          1  sample  323635   0.077 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.00                        1  sample           0.065            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.50                        1  sample           0.073            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.90                        1  sample           0.084            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.95                        1  sample           0.098            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.99                        1  sample           0.126            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.999                       1  sample           0.423            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.9999                      1  sample           0.882            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p1.00                        1  sample          13.599            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO                                          2  sample  322193   0.078 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.00                        2  sample           0.063            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.50                        2  sample           0.073            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.90                        2  sample           0.084            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.95                        2  sample           0.099            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.99                        2  sample           0.125            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.999                       2  sample           0.447            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.9999                      2  sample           0.892            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p1.00                        2  sample          12.780            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO                                          4  sample  311893   0.080 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.00                        4  sample           0.057            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.50                        4  sample           0.073            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.90                        4  sample           0.094            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.95                        4  sample           0.107            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.99                        4  sample           0.143            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.999                       4  sample           0.536            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.9999                      4  sample           1.175            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p1.00                        4  sample          14.172            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO                                          8  sample  322897   0.077 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.00                        8  sample           0.057            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.50                        8  sample           0.072            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.90                        8  sample           0.086            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.95                        8  sample           0.102            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.99                        8  sample           0.128            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.999                       8  sample           0.470            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p0.9999                      8  sample           0.931            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJO:testGetPOJO·p1.00                        8  sample          12.304            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList                                      1  sample  296603   0.084 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.00                1  sample           0.067            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.50                1  sample           0.079            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.90                1  sample           0.094            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.95                1  sample           0.110            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.99                1  sample           0.142            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.999               1  sample           0.567            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.9999              1  sample           0.948            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p1.00                1  sample          14.254            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList                                      2  sample  295821   0.084 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.00                2  sample           0.061            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.50                2  sample           0.080            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.90                2  sample           0.094            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.95                2  sample           0.110            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.99                2  sample           0.138            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.999               2  sample           0.573            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.9999              2  sample           0.932            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p1.00                2  sample          13.124            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList                                      4  sample  300888   0.083 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.00                4  sample           0.069            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.50                4  sample           0.079            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.90                4  sample           0.090            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.95                4  sample           0.101            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.99                4  sample           0.136            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.999               4  sample           0.511            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.9999              4  sample           0.934            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p1.00                4  sample           6.865            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList                                      8  sample  300129   0.083 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.00                8  sample           0.068            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.50                8  sample           0.079            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.90                8  sample           0.089            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.95                8  sample           0.100            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.99                8  sample           0.136            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.999               8  sample           0.565            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p0.9999              8  sample           0.946            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.testGetPOJOList:testGetPOJOList·p1.00                8  sample          13.484            ms/op

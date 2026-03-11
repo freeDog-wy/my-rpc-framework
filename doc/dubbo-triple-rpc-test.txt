@@ -1,0 +1,121 @@
+Benchmark                                               (threadCount)    Mode     Cnt   Score    Error   Units
+DubboBenchmark.testEcho                                             1   thrpt       5   7.171 ±  0.384  ops/ms
+DubboBenchmark.testEcho                                             2   thrpt       5   7.055 ±  0.488  ops/ms
+DubboBenchmark.testEcho                                             4   thrpt       5   7.279 ±  0.226  ops/ms
+DubboBenchmark.testEcho                                             8   thrpt       5   6.999 ±  0.341  ops/ms
+DubboBenchmark.testGetPOJO                                          1   thrpt       5   7.122 ±  0.216  ops/ms
+DubboBenchmark.testGetPOJO                                          2   thrpt       5   7.204 ±  0.204  ops/ms
+DubboBenchmark.testGetPOJO                                          4   thrpt       5   7.141 ±  0.231  ops/ms
+DubboBenchmark.testGetPOJO                                          8   thrpt       5   7.202 ±  0.165  ops/ms
+DubboBenchmark.testGetPOJOList                                      1   thrpt       5   6.693 ±  0.270  ops/ms
+DubboBenchmark.testGetPOJOList                                      2   thrpt       5   6.653 ±  0.206  ops/ms
+DubboBenchmark.testGetPOJOList                                      4   thrpt       5   6.698 ±  0.219  ops/ms
+DubboBenchmark.testGetPOJOList                                      8   thrpt       5   6.698 ±  0.175  ops/ms
+DubboBenchmark.testEcho                                             1  sample  179475   0.139 ±  0.001   ms/op
+DubboBenchmark.testEcho:testEcho·p0.00                              1  sample           0.097            ms/op
+DubboBenchmark.testEcho:testEcho·p0.50                              1  sample           0.130            ms/op
+DubboBenchmark.testEcho:testEcho·p0.90                              1  sample           0.160            ms/op
+DubboBenchmark.testEcho:testEcho·p0.95                              1  sample           0.193            ms/op
+DubboBenchmark.testEcho:testEcho·p0.99                              1  sample           0.327            ms/op
+DubboBenchmark.testEcho:testEcho·p0.999                             1  sample           0.830            ms/op
+DubboBenchmark.testEcho:testEcho·p0.9999                            1  sample           1.366            ms/op
+DubboBenchmark.testEcho:testEcho·p1.00                              1  sample           8.782            ms/op
+DubboBenchmark.testEcho                                             2  sample  177132   0.141 ±  0.001   ms/op
+DubboBenchmark.testEcho:testEcho·p0.00                              2  sample           0.098            ms/op
+DubboBenchmark.testEcho:testEcho·p0.50                              2  sample           0.131            ms/op
+DubboBenchmark.testEcho:testEcho·p0.90                              2  sample           0.160            ms/op
+DubboBenchmark.testEcho:testEcho·p0.95                              2  sample           0.190            ms/op
+DubboBenchmark.testEcho:testEcho·p0.99                              2  sample           0.375            ms/op
+DubboBenchmark.testEcho:testEcho·p0.999                             2  sample           0.835            ms/op
+DubboBenchmark.testEcho:testEcho·p0.9999                            2  sample           1.391            ms/op
+DubboBenchmark.testEcho:testEcho·p1.00                              2  sample          10.764            ms/op
+DubboBenchmark.testEcho                                             4  sample  171739   0.146 ±  0.001   ms/op
+DubboBenchmark.testEcho:testEcho·p0.00                              4  sample           0.097            ms/op
+DubboBenchmark.testEcho:testEcho·p0.50                              4  sample           0.132            ms/op
+DubboBenchmark.testEcho:testEcho·p0.90                              4  sample           0.173            ms/op
+DubboBenchmark.testEcho:testEcho·p0.95                              4  sample           0.208            ms/op
+DubboBenchmark.testEcho:testEcho·p0.99                              4  sample           0.423            ms/op
+DubboBenchmark.testEcho:testEcho·p0.999                             4  sample           0.883            ms/op
+DubboBenchmark.testEcho:testEcho·p0.9999                            4  sample           3.607            ms/op
+DubboBenchmark.testEcho:testEcho·p1.00                              4  sample          12.567            ms/op
+DubboBenchmark.testEcho                                             8  sample  180617   0.138 ±  0.001   ms/op
+DubboBenchmark.testEcho:testEcho·p0.00                              8  sample           0.097            ms/op
+DubboBenchmark.testEcho:testEcho·p0.50                              8  sample           0.129            ms/op
+DubboBenchmark.testEcho:testEcho·p0.90                              8  sample           0.157            ms/op
+DubboBenchmark.testEcho:testEcho·p0.95                              8  sample           0.190            ms/op
+DubboBenchmark.testEcho:testEcho·p0.99                              8  sample           0.323            ms/op
+DubboBenchmark.testEcho:testEcho·p0.999                             8  sample           0.849            ms/op
+DubboBenchmark.testEcho:testEcho·p0.9999                            8  sample           1.280            ms/op
+DubboBenchmark.testEcho:testEcho·p1.00                              8  sample           9.437            ms/op
+DubboBenchmark.testGetPOJO                                          1  sample  179881   0.139 ±  0.001   ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.00                        1  sample           0.096            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.50                        1  sample           0.128            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.90                        1  sample           0.155            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.95                        1  sample           0.190            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.99                        1  sample           0.415            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.999                       1  sample           0.842            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.9999                      1  sample           1.528            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p1.00                        1  sample          16.253            ms/op
+DubboBenchmark.testGetPOJO                                          2  sample  177856   0.141 ±  0.001   ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.00                        2  sample           0.098            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.50                        2  sample           0.129            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.90                        2  sample           0.158            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.95                        2  sample           0.190            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.99                        2  sample           0.403            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.999                       2  sample           0.855            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.9999                      2  sample           1.651            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p1.00                        2  sample          15.827            ms/op
+DubboBenchmark.testGetPOJO                                          4  sample  177988   0.141 ±  0.001   ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.00                        4  sample           0.097            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.50                        4  sample           0.129            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.90                        4  sample           0.159            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.95                        4  sample           0.192            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.99                        4  sample           0.410            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.999                       4  sample           0.843            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.9999                      4  sample           1.396            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p1.00                        4  sample          10.846            ms/op
+DubboBenchmark.testGetPOJO                                          8  sample  178231   0.140 ±  0.001   ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.00                        8  sample           0.098            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.50                        8  sample           0.130            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.90                        8  sample           0.160            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.95                        8  sample           0.196            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.99                        8  sample           0.321            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.999                       8  sample           0.823            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p0.9999                      8  sample           1.293            ms/op
+DubboBenchmark.testGetPOJO:testGetPOJO·p1.00                        8  sample          12.599            ms/op
+DubboBenchmark.testGetPOJOList                                      1  sample  164016   0.152 ±  0.001   ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.00                1  sample           0.099            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.50                1  sample           0.140            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.90                1  sample           0.184            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.95                1  sample           0.216            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.99                1  sample           0.335            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.999               1  sample           0.914            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.9999              1  sample           1.674            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p1.00                1  sample          23.757            ms/op
+DubboBenchmark.testGetPOJOList                                      2  sample  166779   0.150 ±  0.001   ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.00                2  sample           0.100            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.50                2  sample           0.139            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.90                2  sample           0.175            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.95                2  sample           0.202            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.99                2  sample           0.388            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.999               2  sample           0.860            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.9999              2  sample           1.319            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p1.00                2  sample           6.152            ms/op
+DubboBenchmark.testGetPOJOList                                      4  sample  165524   0.151 ±  0.001   ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.00                4  sample           0.099            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.50                4  sample           0.140            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.90                4  sample           0.175            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.95                4  sample           0.203            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.99                4  sample           0.390            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.999               4  sample           0.863            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.9999              4  sample           1.992            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p1.00                4  sample          15.041            ms/op
+DubboBenchmark.testGetPOJOList                                      8  sample  167224   0.149 ±  0.001   ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.00                8  sample           0.098            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.50                8  sample           0.138            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.90                8  sample           0.174            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.95                8  sample           0.201            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.99                8  sample           0.362            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.999               8  sample           0.855            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p0.9999              8  sample           1.440            ms/op
+DubboBenchmark.testGetPOJOList:testGetPOJOList·p1.00                8  sample          12.091            ms/op

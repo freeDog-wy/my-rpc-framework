@@ -1,0 +1,51 @@
+Benchmark                                                    (threadCount)    Mode     Cnt   Score    Error   Units
+myRpcFramework.consumer.test.RpcBenchmark.call                           1   thrpt       5  12.045 ±  0.237  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.call                           2   thrpt       5  11.977 ±  0.208  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.call                           4   thrpt       5  12.115 ±  0.153  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.call                           8   thrpt       5  12.167 ±  0.112  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.call                          16   thrpt       5  12.136 ±  0.095  ops/ms
+myRpcFramework.consumer.test.RpcBenchmark.call                           1  sample  302439   0.083 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.00                1  sample           0.066            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.50                1  sample           0.078            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.90                1  sample           0.087            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.95                1  sample           0.101            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.99                1  sample           0.138            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.999               1  sample           0.535            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.9999              1  sample           0.858            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p1.00                1  sample          13.418            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call                           2  sample  300429   0.083 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.00                2  sample           0.058            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.50                2  sample           0.078            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.90                2  sample           0.089            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.95                2  sample           0.104            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.99                2  sample           0.137            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.999               2  sample           0.462            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.9999              2  sample           1.045            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p1.00                2  sample          14.074            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call                           4  sample  300590   0.083 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.00                4  sample           0.066            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.50                4  sample           0.078            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.90                4  sample           0.092            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.95                4  sample           0.106            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.99                4  sample           0.143            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.999               4  sample           0.555            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.9999              4  sample           0.918            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p1.00                4  sample          12.861            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call                           8  sample  298394   0.084 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.00                8  sample           0.066            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.50                8  sample           0.079            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.90                8  sample           0.091            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.95                8  sample           0.107            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.99                8  sample           0.143            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.999               8  sample           0.537            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.9999              8  sample           0.957            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p1.00                8  sample          13.140            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call                          16  sample  302783   0.083 ±  0.001   ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.00               16  sample           0.059            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.50               16  sample           0.078            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.90               16  sample           0.089            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.95               16  sample           0.104            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.99               16  sample           0.134            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.999              16  sample           0.455            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p0.9999             16  sample           0.924            ms/op
+myRpcFramework.consumer.test.RpcBenchmark.call:call·p1.00               16  sample          13.517            ms/op
