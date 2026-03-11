@@ -27,5 +27,5 @@
     </root>
 
     <!-- 可以针对特定包设置更低的日志级别，方便调试 -->
-<!--    <logger name="site.elseif.rpc" level="DEBUG" />-->
+<!--    <logger name="site.elseif.rpc" level="INFO" />-->
 </configuration>

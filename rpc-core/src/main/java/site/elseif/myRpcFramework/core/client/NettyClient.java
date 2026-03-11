@@ -1,12 +1,15 @@
 package site.elseif.myRpcFramework.core.client;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import site.elseif.myRpcFramework.common.*;
+import site.elseif.myRpcFramework.common.exception.RpcErrorCode;
+import site.elseif.myRpcFramework.common.exception.RpcException;
 import site.elseif.myRpcFramework.core.discovery.ServiceInstance;
 import site.elseif.myRpcFramework.core.codec.RpcMessageDecoder;
 import site.elseif.myRpcFramework.core.codec.RpcMessageEncoder;
@@ -39,6 +42,7 @@ public class NettyClient {
                 .channel(NioSocketChannel.class)         // 设置通道类型为NIO
                 .option(ChannelOption.TCP_NODELAY, true) // 禁用Nagle算法，提高实时性
                 .option(ChannelOption.SO_KEEPALIVE, true) // 开启TCP keepalive
+                .option(ChannelOption.ALLOCATOR,  PooledByteBufAllocator.DEFAULT) // 开启 Netty 内存池
                 .handler(new ChannelInitializer<SocketChannel>() {  // 设置通道初始化器
                     @Override
                     protected void initChannel(SocketChannel ch) {
@@ -99,7 +103,7 @@ public class NettyClient {
 
         } catch (Exception e) {
             log.error("RPC调用失败", e);
-            throw new RuntimeException("RPC调用失败", e);
+            throw new RpcException(RpcErrorCode.CONNECTION_ERROR, "RPC调用失败");
         }
     }
 

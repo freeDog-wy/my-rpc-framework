@@ -9,6 +9,9 @@ import site.elseif.myRpcFramework.core.proxy.ClientProxy;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Slf4j
 public class ConsumerApplication {
     public static void main(String[] args) {
@@ -20,8 +23,16 @@ public class ConsumerApplication {
 
         // 1. 创建代理对象
         ClientProxy proxy = new ClientProxy(MessageConstants.SERIALIZER_HESSIAN, serviceDiscovery);
+
+        proxy.enableNacosConfig("127.0.0.1:8848", "service-rules.yaml", "DEFAULT_GROUP");
+
         HelloService helloService = proxy.getProxy(HelloService.class);
 
+        final int[] qpsList = new int[]{100, 500, 1000, 5000, 10000};
+        for (int qps : qpsList) {
+
+            String result = helloService.sayHello("World");
+        }
         // 2. 调用远程方法
         try {
             for (int i = 0; i < 10; ++i) {

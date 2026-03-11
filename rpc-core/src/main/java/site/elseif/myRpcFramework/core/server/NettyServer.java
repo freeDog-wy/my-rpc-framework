@@ -1,6 +1,7 @@
 package site.elseif.myRpcFramework.core.server;// rpc-core/src/main/java/site/elseif/rpc/core/server/site.elseif.myRpcFramwork.core.server.NettyServer.java
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -13,6 +14,9 @@ import io.netty.handler.logging.LoggingHandler;
 import lombok.extern.slf4j.Slf4j;
 import site.elseif.myRpcFramework.core.codec.RpcMessageDecoder;
 import site.elseif.myRpcFramework.core.codec.RpcMessageEncoder;
+import site.elseif.myRpcFramework.core.config.NacosConfigManager;
+import site.elseif.myRpcFramework.core.config.NacosProviderConfigManager;
+import site.elseif.myRpcFramework.core.config.ServiceConfigManager;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,10 +27,13 @@ public class NettyServer {
     private final String host;
     private final int port;
     private final Map<String, Object> serviceMap = new ConcurrentHashMap<>();
-
-    public NettyServer(String host, int port) {
+    private final ServiceConfigManager serviceConfigManager = new ServiceConfigManager();
+    private final byte serializerType;
+    private NacosConfigManager nacosConfigManager;
+    public NettyServer(String host, int port, byte serializerType) {
         this.host = host;
         this.port = port;
+        this.serializerType = serializerType;
     }
 
     /**
@@ -40,9 +47,18 @@ public class NettyServer {
     }
 
     /**
+     * 启用Nacos配置中心
+     */
+    public void enableNacosConfig(String nacosServerAddr, String dataId, String group) {
+        nacosConfigManager = new NacosProviderConfigManager(nacosServerAddr, dataId, group, serviceConfigManager);
+        log.info("已启用Nacos配置中心：{}", nacosServerAddr);
+    }
+
+    /**
      * 启动服务器
      */
     public void start() throws InterruptedException {
+        serviceConfigManager.applyConfigs();
         // 1. 创建两个线程组
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -62,11 +78,16 @@ public class NettyServer {
                                     // 编码器
                                     .addLast(new RpcMessageEncoder())
                                     // 业务处理器
-                                    .addLast(new NettyServerHandler(serviceMap));
+                                    .addLast(new NettyServerHandler(serviceMap
+                                            , serviceConfigManager.getServiceGroup()
+                                            , serviceConfigManager.getFlowController()
+                                            , serviceConfigManager.getCircuitBreakerManager()
+                                            , serializerType));
                         }
                     })
                     // 优化TCP参数
                     .option(ChannelOption.SO_BACKLOG, 128)
+                    .option(ChannelOption.ALLOCATOR,  PooledByteBufAllocator.DEFAULT)
                     .childOption(ChannelOption.TCP_NODELAY, true)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 

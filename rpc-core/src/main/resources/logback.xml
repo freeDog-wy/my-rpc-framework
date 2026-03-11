@@ -22,7 +22,7 @@
 <!--    </appender>-->
 
     <!-- 日志级别设置 -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE" />
     </root>
 

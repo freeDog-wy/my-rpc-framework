@@ -1,0 +1,25 @@
+# 在Nacos中：dataId=service-rules.yaml
+services:
+  - serviceName: "site.elseif.myRpcFramework.api.HelloService"
+    # 服务端治理规则
+    provider:
+      group: "CORE"
+      methods:
+        - name: "sayHello"
+          flowLimitQps: 1000
+          circuitBreaker:
+            failureThreshold: 5
+            timeoutMs: 10000
+            halfOpenSuccess: 30
+      defaultMethodConfig:
+    # 消费者端治理规则
+    consumer:
+      methods:
+        - name: "sayHello"
+          # 消费者QPS限流
+          flowLimitQps: 500
+          # 熔断配置
+          circuitBreaker:
+            failureThreshold: 5
+            timeoutMs: 5000
+            halfOpenSuccess: 30
