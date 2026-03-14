@@ -5,125 +5,199 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * 熔断器实现
- * 状态机：CLOSED -> OPEN -> HALF_OPEN -> CLOSED
+ * 线程安全的熔断器实现
  */
 @Slf4j
 public class CircuitBreaker {
 
-    // 熔断器状态
     public enum State {
-        CLOSED,     // 关闭状态（正常工作）
-        OPEN,       // 开启状态（熔断）
-        HALF_OPEN   // 半开状态（尝试恢复）
+        CLOSED, OPEN, HALF_OPEN
     }
 
-    private final String key;                    // 熔断器标识（服务#方法）
-    private final int failureThreshold;           // 失败阈值
-    private final long timeoutMs;                 // 熔断超时时间
-    private final int halfOpenSuccessThreshold;   // 半开状态成功阈值
+    private final String key;
+    private final int failureThreshold;
+    private final long baseTimeoutMs;
+    private final long maxTimeoutMs = 5 * 60 * 1000;
+    private final int halfOpenSuccessThreshold;
+    private final int maxBackoffAttempts;
 
-    @Getter
-    private State state = State.CLOSED;
+    // 使用 AtomicReference 保证状态更新的原子性
+    private final AtomicReference<State> state = new AtomicReference<>(State.CLOSED);
+
+    // 使用 Atomic 类型保证计数器的线程安全
     private final AtomicInteger failureCount = new AtomicInteger(0);
     private final AtomicInteger successCount = new AtomicInteger(0);
     private final AtomicLong lastFailureTime = new AtomicLong(0);
+    private final AtomicInteger consecutiveFailures = new AtomicInteger(0);
 
-    public CircuitBreaker(String key, int failureThreshold, long timeoutMs, int halfOpenSuccessThreshold) {
+    // 使用读写锁优化并发性能
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
+
+    public CircuitBreaker(String key, int failureThreshold, long baseTimeoutMs, int halfOpenSuccessThreshold) {
         this.key = key;
         this.failureThreshold = failureThreshold;
-        this.timeoutMs = timeoutMs;
+        this.baseTimeoutMs = baseTimeoutMs;
         this.halfOpenSuccessThreshold = halfOpenSuccessThreshold;
+        this.maxBackoffAttempts = 5;
     }
 
     /**
-     * 是否允许请求通过
+     * 是否允许请求通过（读操作使用读锁）
      */
-    public synchronized boolean allowRequest() {
-        switch (state) {
-            case CLOSED:
-                return true;
+    public boolean allowRequest() {
+        // 先快速检查，避免不必要的锁竞争
+        State currentState = state.get();
 
-            case OPEN:
-                // 检查是否达到超时时间
-                if (System.currentTimeMillis() - lastFailureTime.get() > timeoutMs) {
-                    // 进入半开状态
-                    transitionToHalfOpen();
-                    return true;
-                }
-                log.debug("熔断器开启，请求被拒绝：{}", key);
-                return false;
-
-            case HALF_OPEN:
-                // 半开状态允许部分请求通过
-                return successCount.get() < halfOpenSuccessThreshold;
-
-            default:
-                return false;
+        if (currentState == State.CLOSED) {
+            return true;
         }
-    }
 
-    /**
-     * 记录成功调用
-     */
-    public synchronized void recordSuccess() {
-        if (state == State.HALF_OPEN) {
-            int success = successCount.incrementAndGet();
-            if (success >= halfOpenSuccessThreshold) {
-                // 半开状态连续成功达到阈值，关闭熔断器
-                transitionToClosed();
+        if (currentState == State.OPEN) {
+            // 使用读锁检查是否需要转换到 HALF_OPEN
+            lock.readLock().lock();
+            try {
+                long waitTime = calculateBackoffTime();
+                if (System.currentTimeMillis() - lastFailureTime.get() > waitTime) {
+                    // 需要转换状态，升级到写锁
+                    lock.readLock().unlock();
+                    lock.writeLock().lock();
+                    try {
+                        // 双重检查，防止其他线程已经转换
+                        if (state.get() == State.OPEN &&
+                                System.currentTimeMillis() - lastFailureTime.get() > waitTime) {
+                            transitionToHalfOpen();
+                        }
+                        return state.get() != State.OPEN;
+                    } finally {
+                        lock.writeLock().unlock();
+                        lock.readLock().lock(); // 重新获取读锁以保持平衡
+                    }
+                }
+                return false;
+            } finally {
+                lock.readLock().unlock();
             }
-        } else if (state == State.CLOSED) {
-            // 关闭状态成功，重置失败计数
-            failureCount.set(0);
+        }
+
+        // HALF_OPEN 状态
+        if (currentState == State.HALF_OPEN) {
+            return successCount.get() < halfOpenSuccessThreshold;
+        }
+
+        return false;
+    }
+
+    /**
+     * 记录成功调用（使用写锁）
+     */
+    public void recordSuccess() {
+        lock.writeLock().lock();
+        try {
+            State currentState = state.get();
+
+            if (currentState == State.HALF_OPEN) {
+                int success = successCount.incrementAndGet();
+                if (success >= halfOpenSuccessThreshold) {
+                    transitionToClosed();
+                }
+            } else if (currentState == State.CLOSED) {
+                failureCount.set(0);
+                consecutiveFailures.set(0);
+            }
+        } finally {
+            lock.writeLock().unlock();
         }
     }
 
     /**
-     * 记录失败调用
+     * 记录失败调用（使用写锁）
      */
-    public synchronized void recordFailure() {
-        lastFailureTime.set(System.currentTimeMillis());
+    public void recordFailure() {
+        lock.writeLock().lock();
+        try {
+            lastFailureTime.set(System.currentTimeMillis());
+            consecutiveFailures.incrementAndGet();
 
-        switch (state) {
-            case CLOSED:
-                int failures = failureCount.incrementAndGet();
-                if (failures >= failureThreshold) {
-                    // 达到失败阈值，开启熔断
+            State currentState = state.get();
+
+            switch (currentState) {
+                case CLOSED:
+                    int failures = failureCount.incrementAndGet();
+                    if (failures >= failureThreshold) {
+                        transitionToOpen();
+                    }
+                    break;
+
+                case HALF_OPEN:
                     transitionToOpen();
-                }
-                break;
+                    break;
 
-            case HALF_OPEN:
-                // 半开状态失败，立即熔断
-                transitionToOpen();
-                break;
-
-            case OPEN:
-                // 已经熔断，不需要处理
-                break;
+                case OPEN:
+                    // 已经熔断，只更新失败时间
+                    break;
+            }
+        } finally {
+            lock.writeLock().unlock();
         }
+    }
+
+    private long calculateBackoffTime() {
+        int attempts = Math.min(consecutiveFailures.get(), maxBackoffAttempts);
+        long timeout = baseTimeoutMs * (1L << attempts);
+        return Math.min(timeout, maxTimeoutMs);
     }
 
     private void transitionToOpen() {
-        state = State.OPEN;
-        successCount.set(0);
-        log.warn("熔断器开启：{}，失败次数：{}", key, failureCount.get());
+        if (state.compareAndSet(State.CLOSED, State.OPEN) ||
+                state.compareAndSet(State.HALF_OPEN, State.OPEN)) {
+            successCount.set(0);
+            log.warn("熔断器开启：{}，失败次数：{}，连续失败次数：{}",
+                    key, failureCount.get(), consecutiveFailures.get());
+        }
     }
 
     private void transitionToHalfOpen() {
-        state = State.HALF_OPEN;
-        successCount.set(0);
-        log.info("熔断器半开：{}，尝试恢复", key);
+        if (state.compareAndSet(State.OPEN, State.HALF_OPEN)) {
+            successCount.set(0);
+            log.info("熔断器半开：{}，尝试恢复，当前连续失败次数：{}",
+                    key, consecutiveFailures.get());
+        }
     }
 
     private void transitionToClosed() {
-        state = State.CLOSED;
-        failureCount.set(0);
-        successCount.set(0);
-        log.info("熔断器关闭：{}，恢复正常", key);
+        if (state.compareAndSet(State.HALF_OPEN, State.CLOSED)) {
+            failureCount.set(0);
+            successCount.set(0);
+            consecutiveFailures.set(0);
+            log.info("熔断器关闭：{}，恢复正常", key);
+        }
     }
 
+    /**
+     * 获取当前状态（无锁，适用于监控）
+     */
+    public State getState() {
+        return state.get();
+    }
+
+    /**
+     * 获取状态信息（使用读锁保证一致性）
+     */
+    public String getStateInfo() {
+        lock.readLock().lock();
+        try {
+            return String.format(
+                    "CircuitBreaker{key='%s', state=%s, failures=%d, consecutiveFailures=%d, waitTime=%dms}",
+                    key, state.get(), failureCount.get(), consecutiveFailures.get(),
+                    state.get() == State.OPEN ? calculateBackoffTime() : 0
+            );
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
 }
