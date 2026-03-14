@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import site.elseif.myRpcFramework.common.MessageConstants;
 import site.elseif.myRpcFramework.common.MessageHeader;
 import site.elseif.myRpcFramework.common.RpcProtocol;
+import site.elseif.myRpcFramework.common.exception.RpcErrorCode;
+import site.elseif.myRpcFramework.common.exception.RpcException;
 import site.elseif.myRpcFramework.core.serializer.SerializerFactory;
 import site.elseif.myRpcFramework.core.serializer.Serializer;
 
@@ -25,6 +27,17 @@ public class RpcMessageEncoder extends MessageToByteEncoder<RpcProtocol<Object>>
             // 2. 序列化消息体
             Serializer serializer = SerializerFactory.getSerializer(header.getSerializerType());
             byte[] bodyBytes = serializer.serialize(body);
+
+            if (bodyBytes.length + 43 > MessageConstants.MAX_FRAME_LENGTH) {
+                log.error("消息体过大，长度：{}", bodyBytes.length);
+                throw new RpcException(
+                        RpcErrorCode.SERIALIZE_ERROR
+                        , "消息体过大，长度："
+                            + bodyBytes.length
+                            + "，最大允许长度："
+                            + (MessageConstants.MAX_FRAME_LENGTH - 43)
+                );
+            }
 
             // 3. 更新数据长度
             header.setDataLength(bodyBytes.length);

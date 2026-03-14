@@ -9,6 +9,8 @@ import site.elseif.myRpcFramework.core.serializer.Serializer;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.nio.charset.StandardCharsets;
+
 @Slf4j
 public class RpcMessageDecoder extends LengthFieldBasedFrameDecoder {
 
@@ -22,7 +24,7 @@ public class RpcMessageDecoder extends LengthFieldBasedFrameDecoder {
          * lengthAdjustment: 长度调整值（长度字段之后还有多少字节才是完整的数据）
          * initialBytesToStrip: 解码后跳过的字节数（这里我们不跳过头部，因为后面要用）
          */
-        super(8 * 1024 * 1024, 39, 4, 0, 0);
+        super(MessageConstants.MAX_FRAME_LENGTH, 39, 4, 0, 0);
     }
 
     @Override
@@ -60,7 +62,7 @@ public class RpcMessageDecoder extends LengthFieldBasedFrameDecoder {
             // 5. 读取消息ID（32字节）
             byte[] messageIdBytes = new byte[32];
             frame.readBytes(messageIdBytes);
-            String messageId = new String(messageIdBytes, "UTF-8").trim();
+            String messageId = new String(messageIdBytes, StandardCharsets.UTF_8).trim();
 
             // 6. 读取数据长度
             int dataLength = frame.readInt();
