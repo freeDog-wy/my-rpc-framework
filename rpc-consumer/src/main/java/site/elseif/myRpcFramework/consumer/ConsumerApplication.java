@@ -18,7 +18,7 @@ public class ConsumerApplication {
         log.info("消费者启动...");
 
 //        NacosServiceDiscovery serviceDiscovery = new NacosServiceDiscovery("127.0.0.1:8848", "public");
-        NacosListenerServiceDiscovery serviceDiscovery = new NacosListenerServiceDiscovery("127.0.0.1", "public");
+        NacosListenerServiceDiscovery serviceDiscovery = new NacosListenerServiceDiscovery("127.0.0.1:8848", "public");
 //        CachingServiceDiscovery cachingServiceDiscovery = new CachingServiceDiscovery(serviceDiscovery, 30 * 1000); // 缓存30秒
 
         // 1. 创建代理对象
