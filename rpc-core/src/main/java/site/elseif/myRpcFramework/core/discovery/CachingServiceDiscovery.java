@@ -5,7 +5,6 @@ import site.elseif.myRpcFramework.core.loadBalance.LoadBalancer;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CachingServiceDiscovery implements ServiceDiscovery {
 
-    private final ServiceDiscovery delegate;  // 实际的服务发现（如NacosServiceDiscovery）
+    private final ServiceDiscovery delegate;  // 实际的服务发现（NacosServiceDiscovery）
     private final Map<String, CacheEntry> cache = new ConcurrentHashMap<>();
 
     // 缓存有效期（默认60秒）
@@ -75,26 +74,5 @@ public class CachingServiceDiscovery implements ServiceDiscovery {
     @Override
     public void close() {
         delegate.close();
-    }
-
-    /**
-     * 缓存条目
-     */
-    private static class CacheEntry {
-        private final List<ServiceInstance> instances;
-        private final long timestamp;
-
-        CacheEntry(List<ServiceInstance> instances) {
-            this.instances = new CopyOnWriteArrayList<>(instances);
-            this.timestamp = System.currentTimeMillis();
-        }
-
-        boolean isExpired(long cacheExpireTimeMs) {
-            return System.currentTimeMillis() - timestamp > cacheExpireTimeMs;  // 60秒过期
-        }
-
-        List<ServiceInstance> getInstances() {
-            return instances;
-        }
     }
 }

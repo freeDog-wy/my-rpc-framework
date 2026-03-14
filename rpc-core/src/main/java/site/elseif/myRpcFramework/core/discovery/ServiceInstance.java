@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * 服务实例，包含一个服务提供者的基本信息
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServiceInstance {
+public class ServiceInstance implements Serializable {
     private String serviceName;  // 服务名称
     private String ip;           // IP地址
     private int port;            // 端口号
